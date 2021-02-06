@@ -8,13 +8,13 @@ public class BallScript : MonoBehaviour
     public float speed;
     // Reference to ball's rigid body element.
     public Rigidbody rb;
-    // public Ball ball;
 
     // Start is called before the first frame update
     void Start()
     {
         // Ball must launch in either the left or right direction at random.
-        Launch();
+        // 1 second delay.
+        Invoke("Launch", 1);
     }
 
     // Update is called once per frame
@@ -36,11 +36,13 @@ public class BallScript : MonoBehaviour
 
     void OnTriggerEnter()
     {
+        // Restarts ball when it goes through a goal.
         Reset();
-        Launch();
+        // 1 second delay before relaunching.
+        Invoke("Launch", 1);
     }
 
-    private void Reset()
+    public void Reset()
     {
         // Sets the ball back to center.
         rb.velocity = Vector3.zero;

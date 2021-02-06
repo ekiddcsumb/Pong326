@@ -135,10 +135,9 @@ GameObject:
   - component: {fileID: 157442225}
   - component: {fileID: 157442224}
   - component: {fileID: 157442223}
-  - component: {fileID: 157442227}
   m_Layer: 0
-  m_Name: GoalRight
-  m_TagString: Untagged
+  m_Name: Player1Goal
+  m_TagString: Player1Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,24 +212,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157442222}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 12, y: 0, z: 0}
+  m_LocalPosition: {x: 13, y: 0, z: 0}
   m_LocalScale: {x: 17, y: 1, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &157442227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157442222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d933e2ce080635e47b299525e3b62501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &162733148
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +334,7 @@ GameObject:
   - component: {fileID: 363885984}
   - component: {fileID: 363885986}
   m_Layer: 0
-  m_Name: PaddleRight
+  m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,7 +447,7 @@ MonoBehaviour:
   isPlayer1: 0
   speed: 10
   rb: {fileID: 363885984}
-  impulseStrength: 1
+  impulseStrength: 14
 --- !u!1 &537407071
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +476,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &636427335
 GameObject:
@@ -502,9 +489,10 @@ GameObject:
   - component: {fileID: 636427336}
   - component: {fileID: 636427338}
   - component: {fileID: 636427337}
+  - component: {fileID: 636427339}
   m_Layer: 5
-  m_Name: LeftTextScore
-  m_TagString: Untagged
+  m_Name: Player1Score
+  m_TagString: player1score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -525,7 +513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -50}
+  m_AnchoredPosition: {x: 40, y: -50}
   m_SizeDelta: {x: 266.06006, y: 132.13}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &636427337
@@ -561,7 +549,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 000
+  m_Text: 0
 --- !u!222 &636427338
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -570,6 +558,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636427335}
   m_CullTransparentMesh: 0
+--- !u!114 &636427339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636427335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77f098faca3e5f2489d63ca7499f672e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &749068452
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +755,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55040de06feff3a4e87e03e1cdbbe575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1ScoreText: {fileID: 0}
+  player2ScoreText: {fileID: 0}
 --- !u!4 &809243459
 Transform:
   m_ObjectHideFlags: 0
@@ -763,11 +765,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809243457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.4990077, y: -25.703705, z: -1.0985074}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &826367453
 GameObject:
@@ -1154,9 +1156,10 @@ GameObject:
   - component: {fileID: 1312246546}
   - component: {fileID: 1312246550}
   - component: {fileID: 1312246549}
+  - component: {fileID: 1312246551}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1265,8 +1268,22 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &1312246551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312246544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d933e2ce080635e47b299525e3b62501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1Score: 0
+  player2Score: 0
 --- !u!1 &1347502695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,10 +1296,9 @@ GameObject:
   - component: {fileID: 1347502698}
   - component: {fileID: 1347502697}
   - component: {fileID: 1347502696}
-  - component: {fileID: 1347502700}
   m_Layer: 0
-  m_Name: GoalLeft
-  m_TagString: Untagged
+  m_Name: Player2Goal
+  m_TagString: Player2Goal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1357,24 +1373,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347502695}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -12, y: 0, z: 0}
+  m_LocalPosition: {x: -13, y: 0, z: 0}
   m_LocalScale: {x: 17, y: 1, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &1347502700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1347502695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d933e2ce080635e47b299525e3b62501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1619610255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,8 +1391,8 @@ GameObject:
   - component: {fileID: 1619610258}
   - component: {fileID: 1619610257}
   m_Layer: 5
-  m_Name: RightTextScore
-  m_TagString: Untagged
+  m_Name: Player2Score
+  m_TagString: player2score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1409,7 +1413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -50}
+  m_AnchoredPosition: {x: -40, y: -50}
   m_SizeDelta: {x: 266.06006, y: 132.13}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1619610257
@@ -1445,7 +1449,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 000
+  m_Text: 0
 --- !u!222 &1619610258
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1499,7 +1503,7 @@ GameObject:
   - component: {fileID: 2013995985}
   - component: {fileID: 2013995987}
   m_Layer: 0
-  m_Name: PaddleLeft
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1612,4 +1616,4 @@ MonoBehaviour:
   isPlayer1: 1
   speed: 10
   rb: {fileID: 2013995985}
-  impulseStrength: 1
+  impulseStrength: 14
