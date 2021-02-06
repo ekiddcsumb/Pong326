@@ -17,17 +17,19 @@ public class BallScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    // void Update()
-    // {
-    //     
-    // }
+    void Update()
+    {
+        
+    }
 
     private void Launch()
     {
-        // 
+        // Randomly sets x and z direction.
+        // Either goes left or right, and up or down.
+        // Ternary oporators randomly set x/z to either -1 or 1.
         float x = Random.Range(0, 2) == 0 ? -1 : 1;
-        float y = Random.Range(0, 2) == 0 ? -1 : 1;
         float z = Random.Range(0, 2) == 0 ? -1 : 1;
-        rb.velocity = new Vector3(speed * x, speed * y, speed * z);
+        // Speed * -1 or 1 in the x and z direction. No need for y direction.
+        rb.velocity = new Vector3(speed * x, 0, speed * z);
     }
 }

@@ -10,6 +10,7 @@ public class PaddleScript : MonoBehaviour
     public float speed;
 	// Need a reference to the rigid body elements.
     public Rigidbody rb;
+	public float impulseStrength = 1f;
 
     private float movement;
     
@@ -37,4 +38,11 @@ public class PaddleScript : MonoBehaviour
 			// Uses Vector3 (3D) and only moving on the Z axis.
         rb.velocity = new Vector3(0, 0, movement * speed);
     }
+
+void OnCollisionEnter(Collision collision)
+  {
+    Debug.Log($"{this.name} collided with the {collision.gameObject.name}");
+    Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
+    rb.AddForce((transform.up * impulseStrength), ForceMode.Impulse);
+  }
 }
