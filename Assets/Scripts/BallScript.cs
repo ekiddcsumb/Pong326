@@ -8,7 +8,8 @@ public class BallScript : MonoBehaviour
     public float speed;
     // Reference to ball's rigid body element.
     public Rigidbody rb;
-    
+    // public Ball ball;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +32,18 @@ public class BallScript : MonoBehaviour
         float z = Random.Range(0, 2) == 0 ? -1 : 1;
         // Speed * -1 or 1 in the x and z direction. No need for y direction.
         rb.velocity = new Vector3(speed * x, 0, speed * z);
+    }
+
+    void OnTriggerEnter()
+    {
+        Reset();
+        Launch();
+    }
+
+    private void Reset()
+    {
+        // Sets the ball back to center.
+        rb.velocity = Vector3.zero;
+        transform.position = Vector3.zero;
     }
 }

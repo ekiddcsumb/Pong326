@@ -11,7 +11,7 @@ public class PaddleScript : MonoBehaviour
 	// Need a reference to the rigid body elements.
     public Rigidbody rb;
 	public float impulseStrength = 1f;
-
+	
     private float movement;
     
     // Start is called before the first frame update
@@ -41,8 +41,17 @@ public class PaddleScript : MonoBehaviour
 
 void OnCollisionEnter(Collision collision)
   {
-    Debug.Log($"{this.name} collided with the {collision.gameObject.name}");
-    Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
-    rb.AddForce((transform.up * impulseStrength), ForceMode.Impulse);
+	
+    // Debug.Log($"{collision.gameObject.name} collided with the {this.name}");
+    // Rigidbody rb2 = collision.gameObject.GetComponent<Rigidbody>();
+    //
+    // if (this.name == "Player1")
+    // {
+	   //  rb2.AddForce(transform.forward * impulseStrength, 0, 0, ForceMode.Impulse);
+    // }
+    // else
+    // {
+	   //  rb2.AddForce(transform.forward * impulseStrength, 0, 0, ForceMode.Impulse);
+    // }
   }
 }
