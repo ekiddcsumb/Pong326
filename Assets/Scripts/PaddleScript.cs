@@ -10,8 +10,7 @@ public class PaddleScript : MonoBehaviour
     public float speed;
 	// Need a reference to the rigid body elements.
     public Rigidbody rb;
-	public float impulseStrength = 1f;
-	
+
     private float movement;
     
     // Start is called before the first frame update
@@ -19,9 +18,8 @@ public class PaddleScript : MonoBehaviour
     // {
     //     Nothing is happening to paddles at start.
     // }
-
-    // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
         if (isPlayer1)
         {
@@ -38,20 +36,4 @@ public class PaddleScript : MonoBehaviour
 			// Uses Vector3 (3D) and only moving on the Z axis.
         rb.velocity = new Vector3(0, 0, movement * speed);
     }
-
-void OnCollisionEnter(Collision collision)
-  {
-	
-    // Debug.Log($"{collision.gameObject.name} collided with the {this.name}");
-    // Rigidbody rb2 = collision.gameObject.GetComponent<Rigidbody>();
-    //
-    // if (this.name == "Player1")
-    // {
-	   //  rb2.AddForce(transform.forward * impulseStrength, 0, 0, ForceMode.Impulse);
-    // }
-    // else
-    // {
-	   //  rb2.AddForce(transform.forward * impulseStrength, 0, 0, ForceMode.Impulse);
-    // }
-  }
 }

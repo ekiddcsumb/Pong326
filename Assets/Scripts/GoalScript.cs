@@ -19,8 +19,8 @@ public class GoalScript : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        
-        // if other goes through goal,
+        // Goals set as triggers.
+        // If other goes through goal,
         // player score++;
         // output to console player score;
         if (other.name == "Player1Goal")
@@ -44,7 +44,7 @@ public class GoalScript : MonoBehaviour
             Debug.Log($"Player 2 scored! P1: {player1Score}, P2: {player2Score}");
         }
         
-        // if 11 points,
+        // If 11 points,
         // print Game Over, Player whichever wins;
         // reset scores;
         //Debug.Log($"{other.name} landed in {this.name}");
