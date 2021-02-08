@@ -8,7 +8,6 @@ public class BallScript : MonoBehaviour
     public float speed;
     // Reference to ball's rigid body element.
     public Rigidbody rb;
-    public float amount = 50f;
 
     // Start is called before the first frame update
     void Start()
@@ -52,32 +51,32 @@ public class BallScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        float direction = (rb.transform.position.z - collision.transform.position.z) * speed;
+        // float xPosition = rb.position.x;
+        // float zPosition = rb.position.z;
+        
         switch (collision.gameObject.name)
         {
             // If ball hits paddle or wall,
             // go in opposite direction.
+            // Also handles speed increase (by 2) when ball hits paddles.
+            // Also changes ball color when colliding - for the "juice"
             case "Player1":
-                rb.AddForce(transform.right * speed, ForceMode.Impulse);
+                rb.AddForce(transform.right * (speed+=2), ForceMode.Impulse);
+                GetComponent<Renderer>().material.color = Color.cyan;
                 break;
             case "Player2":
-                rb.AddForce(-transform.right * speed, ForceMode.Impulse);
+                rb.AddForce(-transform.right * (speed+=2), ForceMode.Impulse);
+                GetComponent<Renderer>().material.color = Color.magenta;
                 break;
             case "TopWall":
-                rb.AddForce(speed,0, -speed, ForceMode.Impulse);
+                rb.AddForce(direction, 0, direction, ForceMode.Impulse);
+                GetComponent<Renderer>().material.color = Color.green;
                 break;
             case "BottomWall":
-                rb.AddForce(-speed,0, speed, ForceMode.Impulse);
+                rb.AddForce(direction, 0, direction, ForceMode.Impulse);
+                GetComponent<Renderer>().material.color = Color.yellow;
                 break;
-        }
-
-        //Debug.Log($"{this.name} collided with the {collision.gameObject.name}");
-        // If ball hits paddle,
-        // increase ball speed by 2.
-        if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2")
-        {
-            //Debug.Log(speed);
-            speed+=2;
-            //Debug.Log(speed);
         }
     }
 }

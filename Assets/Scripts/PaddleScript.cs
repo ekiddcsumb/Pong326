@@ -31,4 +31,16 @@ public class PaddleScript : MonoBehaviour
 		// Uses Vector3 (3D) and only moving on the Z axis.
         rb.velocity = new Vector3(0, 0, movement * speed);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+	    // More "juice"
+	    GetComponent<Renderer>().material.color = collision.gameObject.name switch
+	    {
+		    "Ball" => Color.blue,
+		    "TopWall" => Color.white,
+		    "BottomWall" => Color.gray,
+		    _ => GetComponent<Renderer>().material.color
+	    };
+    }
 }
