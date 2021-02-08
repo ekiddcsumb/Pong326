@@ -8,37 +8,38 @@ public class BallScript : MonoBehaviour
     public float speed;
     // Reference to ball's rigid body element.
     public Rigidbody rb;
+    public float amount = 50f;
 
     // Start is called before the first frame update
     void Start()
     {
         // Ball must launch in either the left or right direction at random.
         // 1 second delay.
-        Invoke("Launch", 1);
+        Invoke(nameof(Launch), 1);
     }
-    
-    void FixedUpdate()
-    {
 
+    private void FixedUpdate()
+    {
+        
     }
 
     private void Launch()
     {
         // Randomly sets x and z direction.
         // Either goes left or right, and up or down.
-        // Ternary oporators randomly set x/z to either -1 or 1.
+        // Ternary operators randomly set x/z to either -1 or 1.
         float x = Random.Range(0, 2) == 0 ? -1 : 1;
         float z = Random.Range(0, 2) == 0 ? -1 : 1;
         // Speed * -1 or 1 in the x and z direction. No need for y direction.
         rb.velocity = new Vector3(speed * x, 0, speed * z);
     }
 
-    void OnTriggerEnter()
+    private void OnTriggerEnter(Collider other)
     {
         // Restarts ball when it goes through a goal.
         Reset();
         // 1 second delay before relaunching.
-        Invoke("Launch", 1);
+        Invoke(nameof(Launch), 1);
     }
 
     public void Reset()
@@ -48,18 +49,35 @@ public class BallScript : MonoBehaviour
         transform.position = Vector3.zero;
         speed = 5;
     }
-    
-    void OnCollisionEnter(Collision collision)
+
+    private void OnCollisionEnter(Collision collision)
     {
+        switch (collision.gameObject.name)
+        {
+            // If ball hits paddle or wall,
+            // go in opposite direction.
+            case "Player1":
+                rb.AddForce(transform.right * speed, ForceMode.Impulse);
+                break;
+            case "Player2":
+                rb.AddForce(-transform.right * speed, ForceMode.Impulse);
+                break;
+            case "TopWall":
+                rb.AddForce(speed,0, -speed, ForceMode.Impulse);
+                break;
+            case "BottomWall":
+                rb.AddForce(-speed,0, speed, ForceMode.Impulse);
+                break;
+        }
+
         //Debug.Log($"{this.name} collided with the {collision.gameObject.name}");
         // If ball hits paddle,
         // increase ball speed by 2.
         if (collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2")
         {
             //Debug.Log(speed);
-            this.speed+=2;
+            speed+=2;
             //Debug.Log(speed);
         }
-		
     }
 }

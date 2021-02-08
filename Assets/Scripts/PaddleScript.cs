@@ -21,19 +21,14 @@ public class PaddleScript : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (isPlayer1)
-        {
-			// Player 1 uses info from Vertical Input Manager setting.
-            movement = Input.GetAxisRaw("Vertical");
-        }
-        else
-        {
-			// Player 1 uses info from Vertical2 Input Manager setting.
-            movement = Input.GetAxisRaw("Vertical2");
-        }
-			// Velocity of the rigid body element (paddles) is determined by which player is being activated
-			// and the speed value that is declared.
-			// Uses Vector3 (3D) and only moving on the Z axis.
+	    // Checks is player 1 or player 2 paddle is being used.
+	    // Key assignment from Input Manager.
+	    // If player 1, use W and S keys.
+	    // If player 2, use up and down keys.
+	    movement = Input.GetAxisRaw(isPlayer1 ? "Vertical" : "Vertical2");
+	    // Velocity of the rigid body element (paddles) is determined by which player is being activated
+		// and the speed value that is declared.
+		// Uses Vector3 (3D) and only moving on the Z axis.
         rb.velocity = new Vector3(0, 0, movement * speed);
     }
 }
