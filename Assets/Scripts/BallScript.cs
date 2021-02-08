@@ -51,9 +51,10 @@ public class BallScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        float direction = (rb.transform.position.z - collision.transform.position.z) * speed;
-        // float xPosition = rb.position.x;
-        // float zPosition = rb.position.z;
+        float directionz = (rb.transform.position.z - collision.transform.position.z) + speed;
+        float directionx = (rb.transform.position.x - collision.transform.position.x) + speed;
+        float xPosition = rb.position.x;
+        float zPosition = rb.position.z;
         
         switch (collision.gameObject.name)
         {
@@ -63,18 +64,22 @@ public class BallScript : MonoBehaviour
             // Also changes ball color when colliding - for the "juice"
             case "Player1":
                 rb.AddForce(transform.right * (speed+=2), ForceMode.Impulse);
+                //rb.velocity = new Vector3(xPosition, 0, zPosition);
                 GetComponent<Renderer>().material.color = Color.cyan;
                 break;
             case "Player2":
                 rb.AddForce(-transform.right * (speed+=2), ForceMode.Impulse);
+                //rb.velocity = new Vector3(xPosition, 0, zPosition);
                 GetComponent<Renderer>().material.color = Color.magenta;
                 break;
             case "TopWall":
-                rb.AddForce(direction, 0, direction, ForceMode.Impulse);
+                //rb.AddForce(0, 0, -directionz, ForceMode.Impulse);
+                rb.velocity = new Vector3(xPosition, 0, -zPosition);
                 GetComponent<Renderer>().material.color = Color.green;
                 break;
             case "BottomWall":
-                rb.AddForce(direction, 0, direction, ForceMode.Impulse);
+                //rb.AddForce(0, 0, directionz, ForceMode.Impulse);
+                rb.velocity = new Vector3(xPosition, 0, -zPosition);
                 GetComponent<Renderer>().material.color = Color.yellow;
                 break;
         }
