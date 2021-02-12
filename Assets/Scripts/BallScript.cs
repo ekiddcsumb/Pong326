@@ -21,6 +21,7 @@ public class BallScript : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip paddleCollision;
     public AudioClip wallCollision;
+    public float pitchIncrement = (float) .2;
 
 
     private void Awake()
@@ -70,6 +71,8 @@ public class BallScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Audio controls:
+        audioSource.pitch = pitchIncrement * speed;
+        
         if (collision.gameObject.CompareTag(GameTag.Paddle.ToString()))
         {
             audioSource.PlayOneShot(paddleCollision);
@@ -80,12 +83,21 @@ public class BallScript : MonoBehaviour
             audioSource.PlayOneShot(wallCollision);
         }
         
+        // Sound alteration ideas:
+        // - sound increases pitch when ball speed increases
+        // - 
+        
         // Controls for ball impact direction and color change:
-        float directionz = (rb.transform.position.z - collision.transform.position.z) + speed;
-        float directionx = (rb.transform.position.x - collision.transform.position.x) + speed;
+        // float directionz = (rb.transform.position.z - collision.transform.position.z) + speed;
+        // float directionx = (rb.transform.position.x - collision.transform.position.x) + speed;
         float xPosition = rb.position.x;
         float zPosition = rb.position.z;
+
+        // float ballHeight = transform.position.z - collision.transform.position.z;
+        // float maxHeight = collision.collider.bounds.extents.z;
+        // float percentOfMax = ballHeight / maxHeight;
         
+
         switch (collision.gameObject.name)
         {
             // If ball hits paddle or wall,

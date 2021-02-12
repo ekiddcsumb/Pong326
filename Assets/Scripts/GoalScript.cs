@@ -25,6 +25,9 @@ public class GoalScript : MonoBehaviour
         player2text.GetComponent<Text>().color = Color.white;
     }
 
+    // Powerup ideas:
+    // - increase paddle size if score reaches 7.
+    // - make ball speed really fast when score reaches 9.
     void OnTriggerEnter(Collider other)
     {
         // Goals set as triggers.
