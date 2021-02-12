@@ -9,6 +9,8 @@ TagManager:
   - Player2Goal
   - player1score
   - player2score
+  - Wall
+  - Paddle
   layers:
   - Default
   - TransparentFX

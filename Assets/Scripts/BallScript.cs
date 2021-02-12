@@ -1,15 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
+public enum GameTag
+{
+    Wall,
+    Paddle
+}
+
+[RequireComponent(typeof(AudioSource))]
 public class BallScript : MonoBehaviour
 {
     // Ball speed.
     public float speed;
     // Reference to ball's rigid body element.
     public Rigidbody rb;
+    // Audio members:
+    private AudioSource audioSource;
+    public AudioClip paddleCollision;
+    public AudioClip wallCollision;
 
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Start()
     {
         // Ball must launch in either the left or right direction at random.
@@ -51,6 +69,18 @@ public class BallScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Audio controls:
+        if (collision.gameObject.CompareTag(GameTag.Paddle.ToString()))
+        {
+            audioSource.PlayOneShot(paddleCollision);
+        }
+
+        if (collision.gameObject.CompareTag(GameTag.Wall.ToString()))
+        {
+            audioSource.PlayOneShot(wallCollision);
+        }
+        
+        // Controls for ball impact direction and color change:
         float directionz = (rb.transform.position.z - collision.transform.position.z) + speed;
         float directionx = (rb.transform.position.x - collision.transform.position.x) + speed;
         float xPosition = rb.position.x;

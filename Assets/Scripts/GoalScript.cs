@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,13 @@ public class GoalScript : MonoBehaviour
         player1text = GameObject.Find("Player1Score");
         player2text = GameObject.Find("Player2Score");
     }
+
+    private void Reset()
+    { 
+        player1text.GetComponent<Text>().color = Color.white;
+        player2text.GetComponent<Text>().color = Color.white;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         // Goals set as triggers.
@@ -43,6 +51,18 @@ public class GoalScript : MonoBehaviour
             player2text.GetComponent<Text>().text = player2Score.ToString();
             Debug.Log($"Player 2 scored! P1: {player1Score}, P2: {player2Score}");
         }
+
+        if (player1Score == 10)
+        {
+            Debug.Log("One more point to win, Player 1!");
+            player1text.GetComponent<Text>().color = Color.red;
+        }
+        
+        if (player2Score == 10)
+        {
+            Debug.Log("One more point to win, Player 2!");
+            player1text.GetComponent<Text>().color = Color.red;
+        }
         
         // If 11 points,
         // print Game Over, Player whichever wins;
@@ -50,12 +70,14 @@ public class GoalScript : MonoBehaviour
         //Debug.Log($"{other.name} landed in {this.name}");
         if (player1Score == 11)
         {
+            Reset();
             Debug.Log($"Game Over. Player 1 wins! P1: {player1Score = 0}, P2: {player2Score = 0}");
             player1text.GetComponent<Text>().text = player1Score.ToString();
             player2text.GetComponent<Text>().text = player2Score.ToString();
         }
         else if (player2Score == 11)
         {
+            Reset();
             Debug.Log($"Game Over. Player 2 wins! P1: {player1Score = 0}, P2: {player2Score = 0}");
             player1text.GetComponent<Text>().text = player1Score.ToString();
             player2text.GetComponent<Text>().text = player2Score.ToString();
