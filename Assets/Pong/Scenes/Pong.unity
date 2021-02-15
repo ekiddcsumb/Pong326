@@ -1308,6 +1308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1Score: 0
   player2Score: 0
+  ball: {fileID: 1312246549}
 --- !u!82 &1312246552
 AudioSource:
   m_ObjectHideFlags: 0

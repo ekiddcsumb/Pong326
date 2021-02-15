@@ -11,7 +11,7 @@ public class GoalScript : MonoBehaviour
 
     GameObject player1text;
     GameObject player2text;
-    //private Text text;
+    public BallScript ball;
 
     void Start()
     {
@@ -30,6 +30,30 @@ public class GoalScript : MonoBehaviour
     // - make ball speed really fast when score reaches 9.
     void OnTriggerEnter(Collider other)
     {
+        // Power-up: double speed when score is 9.
+        if (player1Score == 8)
+        {
+            ball.speed *= 2;
+        }
+
+        if (player2Score == 8)
+        {
+            ball.speed *= 2;
+        }
+        
+        // Vector3 scale = transform.localScale;
+        // scale.z = 9;
+        // // Increase paddle size if score reaches 7.
+        // if (player1Score == 7)
+        // {
+        //     other.transform.localScale = scale;
+        // }
+        //
+        // if (player2Score == 7)
+        // {
+        //     other.transform.localScale = scale;
+        // }
+        
         // Goals set as triggers.
         // If other goes through goal,
         // player score++;

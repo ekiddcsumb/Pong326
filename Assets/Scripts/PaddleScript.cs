@@ -10,6 +10,9 @@ public class PaddleScript : MonoBehaviour
     public float speed;
 	// Need a reference to the rigid body elements.
     public Rigidbody rb;
+    public GoalScript score;
+
+    private Vector3 scale;
 
     private float movement;
     
@@ -21,6 +24,19 @@ public class PaddleScript : MonoBehaviour
     
     void FixedUpdate()
     {
+	    // scale = rb.transform.localScale;
+	    // scale.z = 9;
+	    // // Increase paddle length if player scores 7.
+	    // if (score.player1Score == 1)
+	    // {
+		   //  rb.transform.localScale = scale;
+	    // }
+	    //
+	    // if (score.player2Score == 1)
+	    // {
+		   //  rb.transform.localScale = scale;
+	    // }
+	    
 	    // Checks is player 1 or player 2 paddle is being used.
 	    // Key assignment from Input Manager.
 	    // If player 1, use W and S keys.
@@ -34,7 +50,7 @@ public class PaddleScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-	    // More "juice"
+		// More "juice"
 	    GetComponent<Renderer>().material.color = collision.gameObject.name switch
 	    {
 		    "Ball" => Color.blue,
