@@ -55,16 +55,6 @@ public class PaddleScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-	    // position = transform.position;
-	    //
-	    // if (collision.collider.name == "TopWall")
-	    // {
-		   //  position.z = (float) (position.z - 0.1);
-		   //  player1.transform.position = position;
-	    // }
-	    
-	    
-	    
 	    // More "juice"
 	    GetComponent<Renderer>().material.color = collision.gameObject.name switch
 	    {

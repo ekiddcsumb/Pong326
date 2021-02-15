@@ -40,20 +40,7 @@ public class GoalScript : MonoBehaviour
         {
             ball.speed *= 2;
         }
-        
-        // Vector3 scale = transform.localScale;
-        // scale.z = 9;
-        // // Increase paddle size if score reaches 7.
-        // if (player1Score == 7)
-        // {
-        //     other.transform.localScale = scale;
-        // }
-        //
-        // if (player2Score == 7)
-        // {
-        //     other.transform.localScale = scale;
-        // }
-        
+
         // Goals set as triggers.
         // If other goes through goal,
         // player score++;
@@ -88,7 +75,7 @@ public class GoalScript : MonoBehaviour
         if (player2Score == 10)
         {
             Debug.Log("One more point to win, Player 2!");
-            player1text.GetComponent<Text>().color = Color.red;
+            player2text.GetComponent<Text>().color = Color.red;
         }
         
         // If 11 points,
