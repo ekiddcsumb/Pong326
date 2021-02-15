@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +12,11 @@ public class PaddleScript : MonoBehaviour
 	// Need a reference to the rigid body elements.
     public Rigidbody rb;
     public GoalScript score;
+    public GameObject player1;
+    public GameObject player2;
 
     private Vector3 scale;
+    private Vector3 position;
 
     private float movement;
     
@@ -24,18 +28,18 @@ public class PaddleScript : MonoBehaviour
     
     void FixedUpdate()
     {
-	    // scale = rb.transform.localScale;
-	    // scale.z = 9;
-	    // // Increase paddle length if player scores 7.
-	    // if (score.player1Score == 1)
-	    // {
-		   //  rb.transform.localScale = scale;
-	    // }
-	    //
-	    // if (score.player2Score == 1)
-	    // {
-		   //  rb.transform.localScale = scale;
-	    // }
+	    scale = transform.localScale;
+	    scale.z = 9;
+	    // Increase paddle length if player scores 7.
+	    if (score.player1Score >= 7)
+	    {
+		    player1.transform.localScale = scale;
+	    }
+	       
+	    if (score.player2Score >= 7)
+	    {
+		    player2.transform.localScale = scale;
+	    }
 	    
 	    // Checks is player 1 or player 2 paddle is being used.
 	    // Key assignment from Input Manager.
@@ -46,11 +50,22 @@ public class PaddleScript : MonoBehaviour
 		// and the speed value that is declared.
 		// Uses Vector3 (3D) and only moving on the Z axis.
         rb.velocity = new Vector3(0, 0, movement * speed);
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-		// More "juice"
+	    // position = transform.position;
+	    //
+	    // if (collision.collider.name == "TopWall")
+	    // {
+		   //  position.z = (float) (position.z - 0.1);
+		   //  player1.transform.position = position;
+	    // }
+	    
+	    
+	    
+	    // More "juice"
 	    GetComponent<Renderer>().material.color = collision.gameObject.name switch
 	    {
 		    "Ball" => Color.blue,
@@ -59,4 +74,5 @@ public class PaddleScript : MonoBehaviour
 		    _ => GetComponent<Renderer>().material.color
 	    };
     }
+    
 }

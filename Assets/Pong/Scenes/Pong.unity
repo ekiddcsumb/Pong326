@@ -447,6 +447,9 @@ MonoBehaviour:
   isPlayer1: 0
   speed: 10
   rb: {fileID: 363885984}
+  score: {fileID: 1312246551}
+  player1: {fileID: 2013995980}
+  player2: {fileID: 363885979}
 --- !u!1 &537407071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,3 +1740,6 @@ MonoBehaviour:
   isPlayer1: 1
   speed: 10
   rb: {fileID: 2013995985}
+  score: {fileID: 1312246551}
+  player1: {fileID: 2013995980}
+  player2: {fileID: 363885979}
